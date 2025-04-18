@@ -1,8 +1,5 @@
 #!/bin/bash -e
 
-# for testing only: skip this script 
-exit 0
-
 # TODO: Improve error checking. 
 #       Handle a CONF_DIR that is present but has incorrect ownership/permissions
 #       Use the higher resolution image for HDMI.
