@@ -149,7 +149,7 @@ jobs:
           compression-level: 8
           disable-first-boot-user-rename: 0
           pi-gen-repository: ${{ github.repository }}
-          pi-gen-version: arm64
+          pi-gen-version: 30-sw-platform
           docker-opts: ''
           enable-noobs: false
           enable-ssh: 0
@@ -175,14 +175,14 @@ jobs:
           mkdir -p deploy
           # Copy the image to the deploy folder
           cp -r ${{ steps.pi-gen-build.outputs.image-path }} deploy/
-          cd deploy
-          # Find all files in the directory and print their size and name
-          find . -type f -printf "%s\t%f\n"
           # Find the file dynamically in the 'deploy' directory
           FILE_PATH=$(find deploy -type f -name "*.img.xz" | head -n 1)
           FILE_NAME=$(basename "${{steps.pi-gen-build.outputs.image-path}}")
           echo "asset_path=$FILE_PATH" >> $GITHUB_ENV
           echo "asset_name=$FILE_NAME" >> $GITHUB_ENV
+          cd deploy
+          # Find all files in the directory and print their size and name
+          find . -type f -printf "%s\t%f\n"
 
       - name: Upload Release Asset to Target Repository
         uses: actions/upload-release-asset@v1
