@@ -3,7 +3,7 @@ name: Rasqberry Pi Image Release
 on:
    push:
      branches:
-       - 30-sw-platform
+       - 30-sw-platform-jrl-workflow
    workflow_dispatch:
      inputs:
        version:
@@ -149,10 +149,10 @@ jobs:
           compression-level: 8
           disable-first-boot-user-rename: 0
           pi-gen-repository: ${{ github.repository }}
-          pi-gen-version: 30-sw-platform
+          pi-gen-version: 30-sw-platform-jrl-workflow
           docker-opts: ''
           enable-noobs: false
-          enable-ssh: 0
+          enable-ssh: 1
           export-last-stage-only: true
           extra-host-dependencies: ''
           extra-host-modules: ''
