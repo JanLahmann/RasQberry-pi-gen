@@ -40,10 +40,6 @@ mkdir -p /home/${FIRST_USER_NAME}/$REPO/venv/$STD_VENV
 
 echo $PATH
 
-type python
-
-type python3
-
 ls /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
 
 #python3 -m venv /home/${FIRST_USER_NAME}/$REPO/venv/$STD_VENV --system-site-packages
