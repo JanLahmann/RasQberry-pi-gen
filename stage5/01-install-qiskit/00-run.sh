@@ -38,7 +38,7 @@ chmod 755 /home/${FIRST_USER_NAME}/${RQB2_CONFDIR}
 echo "install qiskit for ${FIRST_USER_NAME} user"
 mkdir -p /home/${FIRST_USER_NAME}/$REPO/venv/$STD_VENV
 
-python3 -m venv /home/${FIRST_USER_NAME}/$REPO/venv/$STD_VENV --system-site-packages
+python -m venv /home/${FIRST_USER_NAME}/$REPO/venv/$STD_VENV --system-site-packages
 
 source /home/${FIRST_USER_NAME}/$REPO/venv/$STD_VENV/bin/activate
  
