@@ -39,16 +39,12 @@ echo "install qiskit for ${FIRST_USER_NAME} user"
 mkdir -p /home/${FIRST_USER_NAME}/$REPO/venv/$STD_VENV
 
 echo $PATH
-
 ls /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
 
-#python3 -m venv /home/${FIRST_USER_NAME}/$REPO/venv/$STD_VENV --system-site-packages
-
-#source /home/${FIRST_USER_NAME}/$REPO/venv/$STD_VENV/bin/activate
- 
-#.  /home/"${FIRST_USER_NAME}"/.local/bin/rq_install_Qiskit_latest.sh
-
-#deactivate
+python3 -m venv /home/${FIRST_USER_NAME}/$REPO/venv/$STD_VENV --system-site-packages
+source /home/${FIRST_USER_NAME}/$REPO/venv/$STD_VENV/bin/activate
+.  /home/"${FIRST_USER_NAME}"/.local/bin/rq_install_Qiskit_latest.sh
+deactivate
 
 cp -r /home/${FIRST_USER_NAME}/.local  "${ROOTFS_DIR}"/home/${FIRST_USER_NAME}/
 cp  -r /home/${FIRST_USER_NAME}/$REPO "${ROOTFS_DIR}"/home/${FIRST_USER_NAME}/
