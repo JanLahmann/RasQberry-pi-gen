@@ -140,7 +140,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Start build with raspiconfig stage 1-4
+      - name: Start build with raspiconfig stage 0-1
         uses: usimd/pi-gen-action@v1
         id: pi-gen-build
         with:
@@ -166,11 +166,17 @@ jobs:
           password: 'Qiskit1!'
           pi-gen-release: Raspberry Pi Qiskit Release
           pubkey-only-ssh: 0
-          stage-list: stage0 stage1 stage2 stage3 stage4
+          stage-list: stage0 stage1
           timezone: Europe/London
           verbose-output: true
 
-      - name: Start build with raspiconfig stage 5
+  build2:
+    name: Build Image 2
+    needs: [build]
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Start build with raspiconfig stage 2-5
         uses: usimd/pi-gen-action@v1
         id: pi-gen-build-2
         with:
