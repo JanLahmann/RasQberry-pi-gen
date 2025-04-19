@@ -3,7 +3,7 @@ name: Rasqberry Pi Image Release
 on:
    push:
      branches:
-       - 30-sw-platform-JRL-workflow
+       - 30-sw-platform-JRL-workflow-restart
    workflow_dispatch:
      inputs:
        version:
@@ -140,7 +140,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Start build with raspiconfig
+      - name: Start build with raspiconfig stage 1-4
         uses: usimd/pi-gen-action@v1
         id: pi-gen-build
         with:
@@ -149,7 +149,37 @@ jobs:
           compression-level: 8
           disable-first-boot-user-rename: 0
           pi-gen-repository: ${{ github.repository }}
-          pi-gen-version: 30-sw-platform-JRL-workflow
+          pi-gen-version: 30-sw-platform-JRL-workflow-restart
+          docker-opts: ''
+          enable-noobs: false
+          enable-ssh: 1
+          export-last-stage-only: true
+          extra-host-dependencies: ''
+          extra-host-modules: ''
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          hostname: raspberrypi
+          image-name: 'rasqberry-two'
+          increase-runner-disk-size: true
+          keyboard-keymap: gb
+          keyboard-layout: English (UK)
+          locale: en_GB.UTF-8
+          password: 'Qiskit1!'
+          pi-gen-release: Raspberry Pi Qiskit Release
+          pubkey-only-ssh: 0
+          stage-list: stage0 stage1 stage2 stage3 stage4
+          timezone: Europe/London
+          verbose-output: true
+
+      - name: Start build with raspiconfig stage 5
+        uses: usimd/pi-gen-action@v1
+        id: pi-gen-build-2
+        with:
+          apt-proxy: ''
+          compression: xz
+          compression-level: 8
+          disable-first-boot-user-rename: 0
+          pi-gen-repository: ${{ github.repository }}
+          pi-gen-version: 30-sw-platform-JRL-workflow-restart
           docker-opts: ''
           enable-noobs: false
           enable-ssh: 1
@@ -174,10 +204,10 @@ jobs:
         run: |
           mkdir -p deploy
           # Copy the image to the deploy folder
-          cp -r ${{ steps.pi-gen-build.outputs.image-path }} deploy/
+          cp -r ${{ steps.pi-gen-build-2.outputs.image-path }} deploy/
           # Find the file dynamically in the 'deploy' directory
           FILE_PATH=$(find deploy -type f -name "*.img.xz" | head -n 1)
-          FILE_NAME=$(basename "${{steps.pi-gen-build.outputs.image-path}}")
+          FILE_NAME=$(basename "${{steps.pi-gen-build-2.outputs.image-path}}")
           echo "asset_path=$FILE_PATH" >> $GITHUB_ENV
           echo "asset_name=$FILE_NAME" >> $GITHUB_ENV
           cd deploy
