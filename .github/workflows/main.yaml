@@ -1,7 +1,7 @@
 name: Rasqberry Pi Image Release
 
 on:
-   workflow_dispatch:
+   workflow_dispatch: {}
    push:
      branches:
        - 30-sw-platform-JRL-workflow
