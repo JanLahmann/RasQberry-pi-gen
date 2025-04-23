@@ -10,10 +10,10 @@ fi
 
 chmod 755 ${CLONE_DIR}
 
-wget ${RASP_WGET} -O raspi-config
+#wget ${RASP_WGET} -O raspi-config
 # Copy the raspi-config file to the desired locations
- cp  raspi-config  /usr/bin/raspi-config
- cp  raspi-config  /etc/init.d/raspi-config
+# cp  raspi-config  /usr/bin/raspi-config
+# cp  raspi-config  /etc/init.d/raspi-config # why is is it copied here as well? This can stay the standard unmodified raspi-config
 
 echo "FIRST_USER_NAME    : ${FIRST_USER_NAME}"
 [ ! -d /home/${FIRST_USER_NAME}/.local/bin ] && mkdir -p /home/${FIRST_USER_NAME}/.local/bin
@@ -32,6 +32,9 @@ cp -r ${CLONE_DIR}/config/* /usr/config
 
 chmod 755 /home/${FIRST_USER_NAME}/.local/bin 
 chmod 755 /home/${FIRST_USER_NAME}/${RQB2_CONFDIR}
+
+# apply RQB2 patch to /usr/bin/raspi-config at boot time
+(crontab -l 2>/dev/null; echo "@reboot /usr/bin/rq_patch_raspiconfig.sh") | crontab -
 
 # Clean up the temporary clone directory if needed
 # Install Qiskit using pip
