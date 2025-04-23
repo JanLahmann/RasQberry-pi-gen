@@ -1,16 +1,11 @@
 name: Rasqberry Pi Image Release
 
 on:
+   workflow_dispatch:
    push:
      branches:
        - 30-sw-platform-JRL-workflow
-   workflow_dispatch:
-     inputs:
-       version:
-         type: string
-         description: New version number in X.Y.Z
-         required: false
-         default: ''
+
 
 jobs:
   rasqberry-push-version-number:
