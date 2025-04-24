@@ -162,7 +162,7 @@ jobs:
           password: 'Qiskit1!'
           pi-gen-release: Raspberry Pi Qiskit Release
           pubkey-only-ssh: 0
-          stage-list: stage0 stage1 stage2 stage3 stage4 stage6
+          stage-list: stage0 stage1 stage2 stage3 stage4 ./stage6
           timezone: Europe/London
           verbose-output: true
 
