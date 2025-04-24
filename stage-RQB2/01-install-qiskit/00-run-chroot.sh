@@ -35,14 +35,14 @@ echo "FIRST_USER_NAME    : ${FIRST_USER_NAME}"
 [ ! -d /usr/config ] && mkdir -p /usr/config
 [ ! -d /usr/venv ] && mkdir -p /usr/venv
 
-chmod -R  755  ${CLONE_DIR}/bin
-chmod -R  755  ${CLONE_DIR}/config
+chmod -R  755  ${CLONE_DIR}/RQB2-bin
+chmod -R  755  ${CLONE_DIR}/RQB2-config
 
-cp ${CLONE_DIR}/bin/* /home/${FIRST_USER_NAME}/.local/bin/
-cp -r ${CLONE_DIR}/config/* /home/${FIRST_USER_NAME}/${RQB2_CONFDIR}/
+cp ${CLONE_DIR}/RQB2-bin/* /home/${FIRST_USER_NAME}/.local/bin/
+cp -r ${CLONE_DIR}/RQB2-config/* /home/${FIRST_USER_NAME}/${RQB2_CONFDIR}/
 
-cp ${CLONE_DIR}/bin/* /usr/bin
-cp -r ${CLONE_DIR}/config/* /usr/config
+cp ${CLONE_DIR}/RQB2-bin/* /usr/bin
+cp -r ${CLONE_DIR}/RQB2-config/* /usr/config
 
 chmod 755 /home/${FIRST_USER_NAME}/.local/bin 
 chmod 755 /home/${FIRST_USER_NAME}/${RQB2_CONFDIR}
@@ -51,7 +51,7 @@ chmod 755 /home/${FIRST_USER_NAME}/${RQB2_CONFDIR}
 # adding patch script to root-crontab 
 # (could be done more elegantly with crontab command instead of 
 echo "modify crontab 2"
-echo "@reboot /usr/bin/rq_patch_raspiconfig.sh" >> /var/spool/cron/crontabs/root
+echo "@reboot sleep 2; /usr/bin/rq_patch_raspiconfig.sh" >> /var/spool/cron/crontabs/root
 
 # Clean up the temporary clone directory if needed
 # Install Qiskit using pip
