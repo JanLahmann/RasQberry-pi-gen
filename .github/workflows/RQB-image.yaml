@@ -135,20 +135,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: intro build
-        run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-
-      - name: list files in repo
-        run: |
-          ls ${{ github.workspace}}
-
+ 
       - name: checkout repo
         uses: actions/checkout@v4
-
-      - name: list files in repo
-        run: |
-          ls ${{ github.workspace}}
 
       - name: Start build with raspiconfig
         uses: usimd/pi-gen-action@v1
@@ -177,7 +166,7 @@ jobs:
           password: 'Qiskit1!'
           pi-gen-release: Raspberry Pi Qiskit Release
           pubkey-only-ssh: 0
-          stage-list: stage0 stage1 stage2 stage3 stage4 ./stage6
+          stage-list: stage0 stage1 stage2 stage3 stage4 ./stage-RQB2
           timezone: Europe/London
           verbose-output: true
 
