@@ -6,7 +6,7 @@ if [ -f ../../config ]; then
 	source config
 fi
 # export these variables (also done in build.sh)
-export GIT_BRANCH=${GIT_BRANCH:-30-sw-platform}
+export GIT_BRANCH=${GIT_BRANCH:-30-sw-platform-JRL}
 export GIT_REPO=${GIT_REPO:-https://github.com/JanLahmann/RasQberry-Two.git}
 export REPO=${REPO:-RasQberry-Two}
 export STD_VENV=${STD_VENV:-RQB2}
