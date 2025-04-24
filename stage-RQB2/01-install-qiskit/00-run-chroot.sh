@@ -12,6 +12,12 @@ export REPO=${REPO:-RasQberry-Two}
 export STD_VENV=${STD_VENV:-RQB2}
 export RQB2_CONFDIR=${RQB2_CONFDIR:-.local/config}
 export PIGEN=${PIGEN:-true}
+echo "GIT_BRANCH " $GIT_BRANCH
+echo "GIT_REPO " $GIT_REPO
+echo "REPO " $REPO
+echo "STD_VENV " $STD_VENV
+echo "RQB2_CONFDIR " $RQB2_CONFDIR
+echo "PIGEN " $PIGEN
 
 # Clone the Git repository
 echo "Starting qiskit Installation"
