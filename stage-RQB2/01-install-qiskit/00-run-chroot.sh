@@ -1,10 +1,24 @@
 #!/bin/bash -e
 
+echo "GIT_BRANCH " $GIT_BRANCH
+echo "GIT_REPO " $GIT_REPO
+echo "REPO " $REPO
+echo "STD_VENV " $STD_VENV
+echo "RQB2_CONFDIR " $RQB2_CONFDIR
+echo "PIGEN " $PIGEN
+
 # import environemnt & configuration
 if [ -f ../../config ]; then
 	# shellcheck disable=SC1091
 	source config
+    echo "../../config found"
 fi
+echo "GIT_BRANCH " $GIT_BRANCH
+echo "GIT_REPO " $GIT_REPO
+echo "REPO " $REPO
+echo "STD_VENV " $STD_VENV
+echo "RQB2_CONFDIR " $RQB2_CONFDIR
+echo "PIGEN " $PIGEN
 # export these variables (also done in build.sh)
 export GIT_BRANCH=${GIT_BRANCH:-30-sw-platform-JRL}
 export GIT_REPO=${GIT_REPO:-https://github.com/JanLahmann/RasQberry-Two.git}
