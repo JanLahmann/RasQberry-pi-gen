@@ -1,5 +1,8 @@
 #!/bin/bash -e
 
+# skip this File for workflow testing
+exit 0
+
 # TODO: Improve error checking. 
 #       Handle a CONF_DIR that is present but has incorrect ownership/permissions
 #       Use the higher resolution image for HDMI.
