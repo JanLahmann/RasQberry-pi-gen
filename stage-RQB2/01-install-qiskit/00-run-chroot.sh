@@ -1,5 +1,18 @@
 #!/bin/bash -e
 
+# import environemnt & configuration
+if [ -f ../../config ]; then
+	# shellcheck disable=SC1091
+	source config
+fi
+# export these variables (also done in build.sh)
+export GIT_BRANCH=${GIT_BRANCH:-30-sw-platform}
+export GIT_REPO=${GIT_REPO:-https://github.com/JanLahmann/RasQberry-Two.git}
+export REPO=${REPO:-RasQberry-Two}
+export STD_VENV=${STD_VENV:-RQB2}
+export RQB2_CONFDIR=${RQB2_CONFDIR:-.local/config}
+export PIGEN=${PIGEN:-true}
+
 # Clone the Git repository
 echo "Starting qiskit Installation"
 export CLONE_DIR="/tmp/${REPO}"
