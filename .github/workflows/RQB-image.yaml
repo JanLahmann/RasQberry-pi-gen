@@ -142,9 +142,9 @@ jobs:
           apt-proxy: ''
           compression: xz
           compression-level: 8
-          disable-first-boot-user-rename: 0
+          disable-first-boot-user-rename: 1
           pi-gen-repository: ${{ github.repository }}
-          pi-gen-version: 30-sw-platform-JRL-workflow
+          pi-gen-version: 30-sw-platform-JRL
           docker-opts: ''
           enable-noobs: false
           enable-ssh: 1
@@ -158,10 +158,11 @@ jobs:
           keyboard-keymap: gb
           keyboard-layout: English (UK)
           locale: en_GB.UTF-8
+          username: rasqberry
           password: 'Qiskit1!'
           pi-gen-release: Raspberry Pi Qiskit Release
           pubkey-only-ssh: 0
-          stage-list: stage0 stage1 stage2 stage3 stage4 stage5
+          stage-list: stage0 stage1 stage2 stage3 stage4 stage-RQB2
           timezone: Europe/London
           verbose-output: true
 
