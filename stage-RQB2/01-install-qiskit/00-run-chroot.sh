@@ -8,6 +8,13 @@ echo "RQB2_CONFDIR " $RQB2_CONFDIR
 echo "PIGEN " $PIGEN
 
 # import environemnt & configuration
+echo "ls ."
+ls -la . || true
+echo "ls .."
+ls -la .. || true
+echo "ls ../.."
+ls -la ../.. || true
+
 if [ -f ../../config ]; then
 	# shellcheck disable=SC1091
 	source config
@@ -49,43 +56,18 @@ echo "FIRST_USER_NAME    : ${FIRST_USER_NAME}"
 [ ! -d /usr/config ] && mkdir -p /usr/config
 [ ! -d /usr/venv ] && mkdir -p /usr/venv
 
-echo "1. ls ${CLONE_DIR}"
-ls -la ${CLONE_DIR} || true
-ls -la ${CLONE_DIR}/RQB2-bin || true
-ls -la ${CLONE_DIR}/RQB2-config || true
-
-
 chmod -R  755  ${CLONE_DIR}/RQB2-bin 
 chmod -R  755  ${CLONE_DIR}/RQB2-config
 
-echo "2. ls ${CLONE_DIR}"
-ls -la ${CLONE_DIR} || true
-ls -la ${CLONE_DIR}/RQB2-bin || true
-ls -la ${CLONE_DIR}/RQB2-config || true
 
 cp ${CLONE_DIR}/RQB2-bin/* /home/${FIRST_USER_NAME}/.local/bin/
 cp -r ${CLONE_DIR}/RQB2-config/* /home/${FIRST_USER_NAME}/${RQB2_CONFDIR}/
 
-echo "3. ls"
-ls -la /home/${FIRST_USER_NAME}/.local/bin/ || true
-ls -la /home/${FIRST_USER_NAME}/${RQB2_CONFDIR}/ || true
-ls -la /usr/bin || true
-ls -la /usr/config || true
-
-
 cp ${CLONE_DIR}/RQB2-bin/* /usr/bin
 cp -r ${CLONE_DIR}/RQB2-config/* /usr/config
 
-echo "4. ls"
-ls -la /usr/bin || true
-ls -la /usr/config || true
-
 chmod 755 /home/${FIRST_USER_NAME}/.local/bin 
 chmod 755 /home/${FIRST_USER_NAME}/${RQB2_CONFDIR}
-
-echo "5. ls"
-ls -la /home/${FIRST_USER_NAME}/.local/bin/ || true
-ls -la /home/${FIRST_USER_NAME}/${RQB2_CONFDIR}/ || true
 
 # apply RQB2 patch to /usr/bin/raspi-config at boot time
 # adding patch script to root-crontab 
