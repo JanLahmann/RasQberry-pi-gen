@@ -137,8 +137,8 @@ jobs:
     steps:
       - name: intro build
         run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-        run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."- name: list files in repo
-        run: |
+      - run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."- name: list files in repo
+      - run: |
           ls ${{ github.workspace}}
 
       - name: Start build with raspiconfig
