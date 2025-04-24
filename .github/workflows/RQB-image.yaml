@@ -144,7 +144,7 @@ jobs:
           compression-level: 8
           disable-first-boot-user-rename: 1
           pi-gen-repository: RPi-Distro/pi-gen
-          pi-gen-version: amd64
+          pi-gen-version: arm64
           docker-opts: ''
           enable-noobs: false
           enable-ssh: 1
