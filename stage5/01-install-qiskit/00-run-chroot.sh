@@ -35,12 +35,13 @@ chmod 755 /home/${FIRST_USER_NAME}/${RQB2_CONFDIR}
 
 # apply RQB2 patch to /usr/bin/raspi-config at boot time
 echo "modify crontab 1"
-crontab -l
+crontab -l || true
 (crontab -l 2>/dev/null; echo "@reboot /usr/bin/rq_patch_raspiconfig.sh") | crontab -
-crontab -l
+crontab -l || true
 echo "modify crontab 2"
 echo "@reboot /usr/bin/rq_patch_raspiconfig.sh" >> /var/spool/cron/crontabs/root
-crontab -l
+crontab -l || true
+echo "end modify crontab 2"
 
 # Clean up the temporary clone directory if needed
 # Install Qiskit using pip
