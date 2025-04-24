@@ -10,11 +10,6 @@ fi
 
 chmod 755 ${CLONE_DIR}
 
-#wget ${RASP_WGET} -O raspi-config
-# Copy the raspi-config file to the desired locations
-# cp  raspi-config  /usr/bin/raspi-config
-# cp  raspi-config  /etc/init.d/raspi-config # why is is it copied here as well? This can stay the standard unmodified raspi-config
-
 echo "FIRST_USER_NAME    : ${FIRST_USER_NAME}"
 [ ! -d /home/${FIRST_USER_NAME}/.local/bin ] && mkdir -p /home/${FIRST_USER_NAME}/.local/bin
 [ ! -d /home/${FIRST_USER_NAME}/${RQB2_CONFDIR} ] && mkdir -p /home/${FIRST_USER_NAME}/${RQB2_CONFDIR}
@@ -36,14 +31,8 @@ chmod 755 /home/${FIRST_USER_NAME}/${RQB2_CONFDIR}
 # apply RQB2 patch to /usr/bin/raspi-config at boot time
 # adding patch script to root-crontab 
 # (could be done more elegantly with crontab command instead of 
-#echo "modify crontab 1"
-#crontab -l || true
-#(crontab -l 2>/dev/null; echo "@reboot /usr/bin/rq_patch_raspiconfig.sh") | crontab -
-#crontab -l || true
 echo "modify crontab 2"
 echo "@reboot /usr/bin/rq_patch_raspiconfig.sh" >> /var/spool/cron/crontabs/root
-#crontab -l || true
-#echo "end modify crontab 2"
 
 # Clean up the temporary clone directory if needed
 # Install Qiskit using pip
@@ -55,8 +44,6 @@ source /home/${FIRST_USER_NAME}/$REPO/venv/$STD_VENV/bin/activate
 .  /home/"${FIRST_USER_NAME}"/.local/bin/rq_install_Qiskit_latest.sh
 deactivate
 
-#cp -r /home/${FIRST_USER_NAME}/.local  "${ROOTFS_DIR}"/home/${FIRST_USER_NAME}/
-#cp  -r /home/${FIRST_USER_NAME}/$REPO "${ROOTFS_DIR}"/home/${FIRST_USER_NAME}/
 cp  -r /home/${FIRST_USER_NAME}/$REPO  /usr/venv
 export LINE=". /usr/config/setup_qiskit_env.sh"
 echo "$LINE" >> /etc/skel/.bashrc
