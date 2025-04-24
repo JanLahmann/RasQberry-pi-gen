@@ -138,6 +138,14 @@ jobs:
       - name: intro build
         run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+
+      - name: list files in repo
+        run: |
+          ls ${{ github.workspace}}
+
+      - name: checkout repo
+        uses: actions/checkout@v4
+
       - name: list files in repo
         run: |
           ls ${{ github.workspace}}
